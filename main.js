@@ -31,8 +31,8 @@ app.on("ready", () => {
   Menu.setApplicationMenu(mainMenu);
 });
 
+// create menu template
 const menuTemplate = [
-  {},
   {
     label: "File",
     submenu: [
@@ -46,3 +46,8 @@ const menuTemplate = [
     ]
   }
 ];
+
+// push empty menuItem for mac os
+if (process.platform == "darwin") {
+  menuTemplate.unshift({});
+}
