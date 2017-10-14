@@ -2,7 +2,7 @@ const electron = require("electron");
 const url = require("url");
 const path = require("path");
 
-const { app, BrowserWindow } = electron;
+const { app, BrowserWindow, Menu } = electron;
 
 let mainWindow;
 
@@ -18,4 +18,31 @@ app.on("ready", () => {
       slashes: true
     })
   );
+
+  // quit app when closed
+  mainWindow.on("close", () => {
+    app.quit();
+  });
+
+  // build the menu
+  const mainMenu = Menu.buildFromTemplate(menuTemplate);
+
+  // set the menu
+  Menu.setApplicationMenu(mainMenu);
 });
+
+const menuTemplate = [
+  {},
+  {
+    label: "File",
+    submenu: [
+      {
+        label: "Quit",
+        accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
+        click() {
+          app.quit();
+        }
+      }
+    ]
+  }
+];
