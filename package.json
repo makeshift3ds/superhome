@@ -1,0 +1,13 @@
+{
+  "name": "superhome",
+  "version": "1.0.0",
+  "main": "main.js",
+  "author": "Ken Elliott <makeshift3d@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.7.9"
+  },
+  "scripts": {
+    "start": "electron ."
+  }
+}
